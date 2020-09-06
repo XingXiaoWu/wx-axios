@@ -1,0 +1,19 @@
+{
+  "name": "wx-axios",
+  "version": "1.0.0",
+  "description": "无星的网络请求二次封装库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wx",
+    "wx-axios"
+  ],
+  "author": "xing.wu",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "qs": "^6.9.4"
+  }
+}
