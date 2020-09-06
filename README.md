@@ -30,7 +30,7 @@
 先新建Vue项目，在项目里下载依赖包
 ```
 #npm命令下载
-npm install wx-axios --save
+npm install @xing.wu/axios --save
 ```
 假定依赖包已经下载完成。
 
@@ -38,13 +38,13 @@ npm install wx-axios --save
 （1）在VUE项目中的src文件夹下新建一个API文件夹，文件夹里面新建一个api.js
 （2）调用包
 ```
-   import API from 'wx-axios'
+   import API from '@xing.wu/axios'
 ```
 api.js里面写一些API的接口，进行接口管理
 ###  接口请求方式 POSTJSON POSTFORM GET PUT DELETE PATCH
     例如（以POSTFORM为例）： 
 ```
-import API from 'wx-axios';
+import API from '@xing.wu/axios';
 import { Message } from 'element-ui';
 // 错误处理
 function errorHandle(data) {
