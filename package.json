@@ -1,5 +1,5 @@
 {
-  "name": "wx-axios",
+  "name": "@xing.wu/axios",
   "version": "1.0.0",
   "description": "无星的网络请求二次封装库",
   "main": "index.js",
@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "wx",
-    "wx-axios"
+    "xing.wu",
+    "@xing.wu/axios"
   ],
   "author": "xing.wu",
   "license": "MIT",
