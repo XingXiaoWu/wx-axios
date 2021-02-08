@@ -1,0 +1,33 @@
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
+declare function setErrorHandle(handle: Function): void;
+declare const _default: {
+    setErrorHandle: typeof setErrorHandle;
+    POSTJSON: (url: string, params: any, config?: AxiosRequestConfig) => Promise<AxiosResponse<any>>;
+    POSTFROM: (url: string, params: any, config?: AxiosRequestConfig) => Promise<AxiosResponse<any>>;
+    GET: (url: string, params: any, config?: AxiosRequestConfig) => Promise<AxiosResponse<any>>;
+    PUT: (url: string, params: any, config?: AxiosRequestConfig) => Promise<AxiosResponse<any>>;
+    DELETE: (url: string, params: any, config?: AxiosRequestConfig) => Promise<AxiosResponse<any>>;
+    PATCH: (url: string, params: any, config?: AxiosRequestConfig) => Promise<AxiosResponse<any>>;
+    create(config?: AxiosRequestConfig | undefined): import("axios").AxiosInstance;
+    Cancel: import("axios").CancelStatic;
+    CancelToken: import("axios").CancelTokenStatic;
+    isCancel(value: any): boolean;
+    all<T>(values: (T | Promise<T>)[]): Promise<T[]>;
+    spread<T_1, R>(callback: (...args: T_1[]) => R): (array: T_1[]) => R;
+    isAxiosError(payload: any): payload is import("axios").AxiosError<any>;
+    defaults: AxiosRequestConfig;
+    interceptors: {
+        request: import("axios").AxiosInterceptorManager<AxiosRequestConfig>;
+        response: import("axios").AxiosInterceptorManager<AxiosResponse<any>>;
+    };
+    getUri(config?: AxiosRequestConfig | undefined): string;
+    request<T_2 = any, R_1 = AxiosResponse<T_2>>(config: AxiosRequestConfig): Promise<R_1>;
+    get<T_3 = any, R_2 = AxiosResponse<T_3>>(url: string, config?: AxiosRequestConfig | undefined): Promise<R_2>;
+    delete<T_4 = any, R_3 = AxiosResponse<T_4>>(url: string, config?: AxiosRequestConfig | undefined): Promise<R_3>;
+    head<T_5 = any, R_4 = AxiosResponse<T_5>>(url: string, config?: AxiosRequestConfig | undefined): Promise<R_4>;
+    options<T_6 = any, R_5 = AxiosResponse<T_6>>(url: string, config?: AxiosRequestConfig | undefined): Promise<R_5>;
+    post<T_7 = any, R_6 = AxiosResponse<T_7>>(url: string, data?: any, config?: AxiosRequestConfig | undefined): Promise<R_6>;
+    put<T_8 = any, R_7 = AxiosResponse<T_8>>(url: string, data?: any, config?: AxiosRequestConfig | undefined): Promise<R_7>;
+    patch<T_9 = any, R_8 = AxiosResponse<T_9>>(url: string, data?: any, config?: AxiosRequestConfig | undefined): Promise<R_8>;
+};
+export default _default;
