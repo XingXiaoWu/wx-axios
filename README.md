@@ -28,7 +28,7 @@ axios 请求接口的方法，一个基于基于 promise 的 HTTP 库
 - 新建 vue 项目
 
 ```
-npm i @xing.wu/axios
+npm i @xing.wu/axios axios
 ```
 
 - 使用
