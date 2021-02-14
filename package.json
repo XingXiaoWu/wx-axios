@@ -1,13 +1,14 @@
 {
   "name": "@xing.wu/axios",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "无星的网络请求二次封装库",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": "https://github.com/XingXiaoWu/xing.wu-axios.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "push": "npx tsc && npm publish"
+    "push": "npx tsc && npm publish",
+    "next": "npx tsc && npm publish --tag next"
   },
   "keywords": [
     "xing.wu",

@@ -46,68 +46,80 @@ function setErrorHandle(handle: Function): void {
 }
 
 // 相关请求封装
-const GET = (url: string, params: any, config: AxiosRequestConfig = {}) => {
+const GET = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
 	// 注意先解构config，避免params被覆盖
-	return axios
-		.get(url, { ...config, params: params })
-		.then((response: AxiosResponse<any>) => Promise.resolve(response))
-		.catch(error => {
-			if (errorHandle) errorHandle(error);
-			return Promise.reject(error);
-		})
+	try {
+		const response = await axios
+			.get(url, { ...config, params: params });
+		return await Promise.resolve(response);
+	} catch (error) {
+		if (errorHandle)
+			errorHandle(error);
+		return await Promise.reject(error);
+	}
 }
-const POSTJSON = (url: string, params: any, config: AxiosRequestConfig = {}) => {
-	return axios.post(url, params, config)
-		.then((response: AxiosResponse<any>) => Promise.resolve(response))
-		.catch(error => {
-			if (errorHandle) errorHandle(error);
-			return Promise.reject(error);
-		})
+const POSTJSON = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+	try {
+		const response = await axios.post(url, params, config);
+		return await Promise.resolve(response);
+	} catch (error) {
+		if (errorHandle)
+			errorHandle(error);
+		return await Promise.reject(error);
+	}
 }
 
-const POSTFROM = (url: string, params: any, config: AxiosRequestConfig = {}) => {
+const POSTFROM = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
 	// 这里的header设置可能存在被覆盖的风险
-	return axios.post(url, QS.stringify(params), {
-		headers: {
-			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-		},
-		...config
-	})
-		.then((response: AxiosResponse<any>) => Promise.resolve(response))
-		.catch(error => {
-			if (errorHandle) errorHandle(error);
-			return Promise.reject(error);
-		})
+	try {
+		const response = await axios.post(url, QS.stringify(params), {
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+			},
+			...config
+		});
+		return await Promise.resolve(response);
+	} catch (error) {
+		if (errorHandle)
+			errorHandle(error);
+		return await Promise.reject(error);
+	}
 }
 
-const PUT = (url: string, params: any, config: AxiosRequestConfig = {}) => {
-	return axios.put(url, params, config)
-		.then((response: AxiosResponse<any>) => Promise.resolve(response))
-		.catch(error => {
-			if (errorHandle) errorHandle(error);
-			return Promise.reject(error);
-		})
+const PUT = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+	try {
+		const response = await axios.put(url, params, config);
+		return await Promise.resolve(response);
+	} catch (error) {
+		if (errorHandle)
+			errorHandle(error);
+		return await Promise.reject(error);
+	}
 }
 
-const DELETE = (url: string, params: any, config: AxiosRequestConfig = {}) => {
-	return axios.delete(url, {
-		...config,
-		params: params
-	})
-		.then((response: AxiosResponse<any>) => Promise.resolve(response))
-		.catch(error => {
-			if (errorHandle) errorHandle(error);
-			return Promise.reject(error);
-		})
+const DELETE = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+	try {
+		const response = await axios.delete(url, {
+			...config,
+			params: params
+		});
+		return await Promise.resolve(response);
+	} catch (error) {
+		if (errorHandle)
+			errorHandle(error);
+		return await Promise.reject(error);
+	}
 }
 
-const PATCH = (url: string, params: any, config: AxiosRequestConfig = {}) => {
-	return axios.patch(url, params, config)
-		.then((response: AxiosResponse<any>) => Promise.resolve(response))
-		.catch(error => {
-			if (errorHandle) errorHandle(error);
-			return Promise.reject(error);
-		})
+const PATCH = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+	try {
+		const response = await axios.patch(url, params, config);
+		return await Promise.resolve(response);
+	} catch (error) {
+		if (errorHandle)
+			errorHandle(error);
+		return await Promise.reject(error);
+	}
 }
 
 export default {
