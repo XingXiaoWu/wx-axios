@@ -12,6 +12,13 @@ axios.defaults = {
 	...defaults,
 }
 
+// 这里有两种类型可能作为入参数
+declare interface ResponseX<T = any> {
+	status: string;
+	message: string;
+	data?: T;
+}
+
 // 请求拦截器，后添加的先执行，先添加的后执行
 axios.interceptors.request.use(
 	(config: AxiosRequestConfig): AxiosRequestConfig => {
@@ -30,9 +37,7 @@ axios.interceptors.request.use(
 
 // 响应拦截器，先添加的先执行，后添加的后执行
 axios.interceptors.response.use(
-	(response: AxiosResponse<any>): AxiosResponse<any> => {
-		return response.data;
-	},
+	(response: AxiosResponse<ResponseX>): AxiosResponse<ResponseX> => { return response },
 	(error) => {
 		// code 不为200出错
 		throw error;
@@ -46,22 +51,22 @@ function setErrorHandle(handle: Function): void {
 }
 
 // 相关请求封装
-const GET = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+const GET = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	// 注意先解构config，避免params被覆盖
 	try {
 		const response = await axios
 			.get(url, { ...config, params: params });
-		return await Promise.resolve(response);
+		return await Promise.resolve(response.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
 		return await Promise.reject(error);
 	}
 }
-const POSTJSON = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+const POSTJSON = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	try {
 		const response = await axios.post(url, params, config);
-		return await Promise.resolve(response);
+		return await Promise.resolve(response.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
@@ -69,7 +74,7 @@ const POSTJSON = async (url: string, params: any, config: AxiosRequestConfig = {
 	}
 }
 
-const POSTFROM = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+const POSTFROM = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	// 这里的header设置可能存在被覆盖的风险
 	try {
 		const response = await axios.post(url, QS.stringify(params), {
@@ -78,7 +83,7 @@ const POSTFROM = async (url: string, params: any, config: AxiosRequestConfig = {
 			},
 			...config
 		});
-		return await Promise.resolve(response);
+		return await Promise.resolve(response.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
@@ -86,10 +91,10 @@ const POSTFROM = async (url: string, params: any, config: AxiosRequestConfig = {
 	}
 }
 
-const PUT = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+const PUT = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	try {
 		const response = await axios.put(url, params, config);
-		return await Promise.resolve(response);
+		return await Promise.resolve(response.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
@@ -97,13 +102,13 @@ const PUT = async (url: string, params: any, config: AxiosRequestConfig = {}) =>
 	}
 }
 
-const DELETE = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+const DELETE = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	try {
 		const response = await axios.delete(url, {
 			...config,
 			params: params
 		});
-		return await Promise.resolve(response);
+		return await Promise.resolve(response.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
@@ -111,10 +116,10 @@ const DELETE = async (url: string, params: any, config: AxiosRequestConfig = {})
 	}
 }
 
-const PATCH = async (url: string, params: any, config: AxiosRequestConfig = {}) => {
+const PATCH = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	try {
 		const response = await axios.patch(url, params, config);
-		return await Promise.resolve(response);
+		return await Promise.resolve(response.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
