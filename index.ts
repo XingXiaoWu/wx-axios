@@ -51,22 +51,22 @@ function setErrorHandle(handle: Function): void {
 }
 
 // 相关请求封装
-const GET = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
+const GET = async <T = any>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	// 注意先解构config，避免params被覆盖
 	try {
 		const response = await axios
 			.get(url, { ...config, params: params });
-		return await Promise.resolve(response.data);
+		return await Promise.resolve(response.data.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
 		return await Promise.reject(error);
 	}
 }
-const POSTJSON = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
+const POSTJSON = async <T = any>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	try {
 		const response = await axios.post(url, params, config);
-		return await Promise.resolve(response.data);
+		return await Promise.resolve(response.data.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
@@ -74,7 +74,7 @@ const POSTJSON = async <T = ResponseX>(url: string, params: any, config: AxiosRe
 	}
 }
 
-const POSTFROM = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
+const POSTFROM = async <T = any>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	// 这里的header设置可能存在被覆盖的风险
 	try {
 		const response = await axios.post(url, QS.stringify(params), {
@@ -83,7 +83,7 @@ const POSTFROM = async <T = ResponseX>(url: string, params: any, config: AxiosRe
 			},
 			...config
 		});
-		return await Promise.resolve(response.data);
+		return await Promise.resolve(response.data.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
@@ -91,10 +91,10 @@ const POSTFROM = async <T = ResponseX>(url: string, params: any, config: AxiosRe
 	}
 }
 
-const PUT = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
+const PUT = async <T = any>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	try {
 		const response = await axios.put(url, params, config);
-		return await Promise.resolve(response.data);
+		return await Promise.resolve(response.data.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
@@ -102,13 +102,13 @@ const PUT = async <T = ResponseX>(url: string, params: any, config: AxiosRequest
 	}
 }
 
-const DELETE = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
+const DELETE = async <T = any>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	try {
 		const response = await axios.delete(url, {
 			...config,
 			params: params
 		});
-		return await Promise.resolve(response.data);
+		return await Promise.resolve(response.data.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);
@@ -116,10 +116,10 @@ const DELETE = async <T = ResponseX>(url: string, params: any, config: AxiosRequ
 	}
 }
 
-const PATCH = async <T = ResponseX>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
+const PATCH = async <T = any>(url: string, params: any, config: AxiosRequestConfig = {}): Promise<T> => {
 	try {
 		const response = await axios.patch(url, params, config);
-		return await Promise.resolve(response.data);
+		return await Promise.resolve(response.data.data);
 	} catch (error) {
 		if (errorHandle)
 			errorHandle(error);

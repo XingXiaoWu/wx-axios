@@ -1,18 +1,13 @@
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
-declare interface ResponseX<T = any> {
-    status: string;
-    message: string;
-    data?: T;
-}
 declare function setErrorHandle(handle: Function): void;
 declare const _default: {
     setErrorHandle: typeof setErrorHandle;
-    POSTJSON: <T = ResponseX<any>>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T>;
-    POSTFROM: <T_1 = ResponseX<any>>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_1>;
-    GET: <T_2 = ResponseX<any>>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_2>;
-    PUT: <T_3 = ResponseX<any>>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_3>;
-    DELETE: <T_4 = ResponseX<any>>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_4>;
-    PATCH: <T_5 = ResponseX<any>>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_5>;
+    POSTJSON: <T = any>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T>;
+    POSTFROM: <T_1 = any>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_1>;
+    GET: <T_2 = any>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_2>;
+    PUT: <T_3 = any>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_3>;
+    DELETE: <T_4 = any>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_4>;
+    PATCH: <T_5 = any>(url: string, params: any, config?: AxiosRequestConfig) => Promise<T_5>;
     create(config?: AxiosRequestConfig | undefined): import("axios").AxiosInstance;
     Cancel: import("axios").CancelStatic;
     CancelToken: import("axios").CancelTokenStatic;

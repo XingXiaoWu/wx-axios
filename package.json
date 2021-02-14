@@ -1,6 +1,6 @@
 {
   "name": "@xing.wu/axios",
-  "version": "1.0.8-apache1.0.0",
+  "version": "1.0.8-apache1.0.1",
   "description": "无星的网络请求二次封装库",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
