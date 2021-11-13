@@ -21,14 +21,11 @@ axios 请求接口的方法，一个基于基于 promise 的 HTTP 库
 
 ### 项目编译和运行
 
-### 1.安装 nodejs v12.16.3
-
-### 2.下载项目
 
 - 新建 vue 项目
 
 ```
-npm i @xing.wu/axios axios
+npm i @xing.wu/axios
 ```
 
 - 使用
@@ -37,7 +34,7 @@ npm i @xing.wu/axios axios
   - 调用
 
   ```
-  import API from '@xing.wu/axios';
+  import axios from '@xing.wu/axios';
   ```
 
   - 设置拦截器
@@ -45,7 +42,7 @@ npm i @xing.wu/axios axios
     请求拦截器,外部设置的优先执行
 
     ```
-    API.interceptors.request.use(
+    axios.interceptors.request.use(
         (config) => {
             ***
             return config;
@@ -59,14 +56,14 @@ npm i @xing.wu/axios axios
     结果拦截器，外部设置的最后执行
 
     ```
-    API.interceptors.response.use(
+    axios.interceptors.response.use(
       (response) => {
         // 判断状态
-        if (response.status === '0') {
-          return response.data;
+        if (response.data.success) {
+          return response.data.data;
         }
         // 否则都是错了
-        throw new Error(JSON.stringify(response));
+        throw { response };
       },
       (error) => {
         throw error;
@@ -90,13 +87,13 @@ npm i @xing.wu/axios axios
   };
 
   // 设置错误处理
-  API.setErrorHandle(errorHandle);
+  axios.setErrorHandle(errorHandle);
   ```
 
   - 请求
 
   ```
   export default {
-      test: (params) => API.GET('/mqc/sapi/doctor/get-doctor-info', params),
+      test: (params) => axios.GET('/mqc/sapi/doctor/get-doctor-info', params),
   };
   ```
