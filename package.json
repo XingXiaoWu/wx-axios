@@ -1,9 +1,10 @@
 {
   "name": "@xing.wu/axios",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "无星的网络请求二次封装库",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "type": "module",
   "repository": "https://github.com/XingXiaoWu/xing.wu-axios.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
